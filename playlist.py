@@ -84,11 +84,18 @@ def criacao():
             playlist()
         elif (autorizacao == 'NAO') or (autorizacao == 'NÃO'):
             print('Sem problemas, vamos adicionar as suas músicas!')
-            adicionar()
+            musicas()
             validacao = True  
         else:
             while (autorizacao != ('NÃO') and autorizacao != ('SIM') and autorizacao != ('NAO')):
                 print("Mil perdões, a sua resposta foi inválida.")
                 autorizacao = str(input('Você já adicionou suas músicas?\n')).upper()
-            validacao = False      
+            validacao = False
+            
+def musicas ():
+    print('Pode adicionar quantas músicas você quiser, basta apenas me dizer o nome.')
+    musica = str(input('Qual música você quer adicionar? \nCaso não queira mais adicionar digite "Seguinte."'))
+    while musica.upper() != 'SEGUINTE':
+        nome_da_musica.append(musica)
+        musica = str(input('Qual a proxima música você quer adicionar? \nCaso não queira mais adicionar digite "Seguinte."'))
 login()
