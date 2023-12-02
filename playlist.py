@@ -5,8 +5,6 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials(client_id='1f32d0c2f5254d6184a3cdac7f55e8e7', client_secret='727f2b8e54c44193bd37b0fd66f28837')
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-nome_playlist = input(str("Qual será o nome da sua Playlist?"))
-
 # Lista de nomes das músicas
 nomes_das_musicas = [
 ]
@@ -61,6 +59,7 @@ def id():
         if (autorizacao == 'SIM'):
             idUsuario = input('Qual o seu Id de Usuário?\n')
             validacao = True
+            criacao()
         elif (autorizacao == 'NAO') or (autorizacao == 'NÃO'):
             print('Que penas :(')
             print('Para descobrir como leia o README.md')
@@ -69,5 +68,27 @@ def id():
             while (autorizacao != ('NÃO') and autorizacao != ('SIM') and autorizacao != ('NAO')):
                 print("Mil perdões, a sua resposta foi inválida.")
                 autorizacao = str(input('Você sabe o seu Id do Perfil?\n')).upper()
+            validacao = False
+            
+            
+def criacao():
+    validacao = False
+    print('Ok, iremos começar a criar a sua Playlist')
+    nome_playlist = input(str("Qual nome você gostaria de dar para a sua Playlist?\n"))
+    print('Muito obrigado!')
+    autorizacao = str(input('Você já adicionou suas músicas?\n')).upper()
+    while validacao == False:
+        if (autorizacao == 'SIM'):
+            print('Ok, iremos começar a criação da sua Playlist')
+            validacao = True
+            playlist()
+        elif (autorizacao == 'NAO') or (autorizacao == 'NÃO'):
+            print('Sem problemas, vamos adicionar as suas músicas!')
+            adicionar()
+            validacao = True  
+        else:
+            while (autorizacao != ('NÃO') and autorizacao != ('SIM') and autorizacao != ('NAO')):
+                print("Mil perdões, a sua resposta foi inválida.")
+                autorizacao = str(input('Você já adicionou suas músicas?\n')).upper()
             validacao = False      
 login()
