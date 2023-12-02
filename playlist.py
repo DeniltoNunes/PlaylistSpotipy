@@ -1,4 +1,4 @@
-""" import spotipy
+import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 # Autenticação na API do Spotify
@@ -29,20 +29,20 @@ for nome_da_musica in nomes_das_musicas:
 playlist = sp.user_playlist_create(user=idUsuario, name= nome_playlist, public=False)
 
 # Adicionar músicas à playlist
-sp.user_playlist_add_tracks(user=idUsuario, playlist_id=playlist['id'], tracks=id_musicas) """
+sp.user_playlist_add_tracks(user=idUsuario, playlist_id=playlist['id'], tracks=id_musicas)
 
 
 
 def login():
     print("Olá, tudo bem?")
     print("Antes de começarmos a criar sua playlist precisamos de alguns dados.")
-    autorizacao = str(input('Você autorizou a criação de playlists para o seu perfil?')).upper()
+    autorizacao = str(input('Você autorizou a criação de playlists para o seu perfil?\n')).upper()
     validacao = False
     while validacao == False:
         if (autorizacao == 'SIM'):
             print('Muito obrigado :D')
-            idUsuario = input('Qual o seu Id de Usuário?')
             validacao = True
+            id()
         elif (autorizacao == 'NAO') or (autorizacao == 'NÃO'):
             print('Que penas :(')
             print('Para aprender a autorizar leia o README.md')
@@ -50,7 +50,24 @@ def login():
         else:
             while (autorizacao != ('NÃO') and autorizacao != ('SIM') and autorizacao != ('NAO')):
                 print("Mil perdões, a sua resposta foi inválida.")
-                autorizacao = str(input('Você autorizou a criação de playlists para o seu perfil?')).upper()
+                autorizacao = str(input('Você autorizou a criação de playlists para o seu perfil?\n')).upper()
             validacao = False        
-    
+
+def id():
+    validacao = False
+    print('Para continuarmos preciso do seu Id de Perfil')
+    autorizacao = str(input('Você sabe o seu Id do Perfil?\n')).upper()
+    while validacao == False:
+        if (autorizacao == 'SIM'):
+            idUsuario = input('Qual o seu Id de Usuário?\n')
+            validacao = True
+        elif (autorizacao == 'NAO') or (autorizacao == 'NÃO'):
+            print('Que penas :(')
+            print('Para descobrir como leia o README.md')
+            validacao = True  
+        else:
+            while (autorizacao != ('NÃO') and autorizacao != ('SIM') and autorizacao != ('NAO')):
+                print("Mil perdões, a sua resposta foi inválida.")
+                autorizacao = str(input('Você sabe o seu Id do Perfil?\n')).upper()
+            validacao = False      
 login()
